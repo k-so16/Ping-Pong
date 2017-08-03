@@ -1,11 +1,3 @@
-class Table {
-  constructor() {
-    this.DOM = $('<div id="table">');
-
-    $('#window').append(this.DOM);
-  }
-}
-
 class Ball {
   constructor(x, y) {
     this.x = x;
@@ -24,6 +16,7 @@ class Ball {
     var width = $('#table').width() - this.DOM.width();
     var height = $('#table').height() - this.DOM.height();
 
+    // operations when ball touched wall
     if(posX < 0) {
       posX = -posX;
       this.moveX = -this.moveX;
@@ -35,10 +28,7 @@ class Ball {
       posY = -posY;
       this.moveY = -this.moveY;
     } else if(posY >= $('#table').height() - this.DOM.height()) {
-      /*
-      posY = height - (posY - height);
-      this.moveY = -this.moveY;
-      */
+      // game over
       this.moveX = 0;
       this.moveY = 0;
     }
@@ -67,27 +57,19 @@ class Racket {
     var posX = this.x + dx;
     var width = $('#table').width() - this.DOM.width();
 
+    // no moving if racket touching wall
     if(posX < 0) {
       posX = 0;
     } else if(posX > width) {
       posX = width;
     }
 
-    // console.log(posX);
     this.x = posX;
     this.DOM.css({left: posX});
   }
 
   isCollided(ball) {
     if(ball.y + ball.DOM.height() >= this.y) {
-      // console.log("ball: " + ball.x + ", racket: " + this.x);
-      /*
-      if(ball.x + ball.DOM.width() >= this.x) {
-        return true;
-      } else if(this.x + this.DOM.width() >= ball.x) {
-        return true;
-      }
-      */
       var result =
         (ball.x >= this.x - ball.DOM.width()) 
         && (ball.x + ball.DOM.width() <= this.x + this.DOM.width());
@@ -100,11 +82,11 @@ class Racket {
 
 
 $(() => {
-  var t = new Table();
   var b = new Ball(200, 20);
   var r = new Racket($('#table').width() / 2);
 
   var originX;
+  // control the racket from mouse
   $(window).on('mousemove', e => {
     if(originX === undefined) {
       originX = e.screenX;
@@ -114,6 +96,7 @@ $(() => {
     }
   });
 
+  // control the racket from smartphone
   $(window).on('touchstart', e => {
     e.preventDefault();
     if(e.originalEvent.touches.length > 1) {
