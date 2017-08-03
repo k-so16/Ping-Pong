@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/***********************/
+/*                     */
+/*  foundation design  */
+/*                     */
+/***********************/
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  margin:   0px;
+  padding:  0px;
+  height:   100%;
+}
+
+h1 {
+  margin:  0px;
+  padding: 10px 30px;
+}
+
+
+
+/**********************/
+/*                    */
+/*  Ping-Pong design  */
+/*                    */
+/**********************/
+
+#table {
+  position: relative;
+  display: table;
+  margin: 20px auto;
+  height: 320px;
+  width:  240px;
+
+  background: #0040a8;
+}
+
+.ball {
+  position: absolute;
+  display: inline-block;
+  background: #ffff00;
+  width:  20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.racket {
+  position: absolute;
+  bottom: 0px;
+  width: 60px;
+  height: 5px;
+  background: #e80000;
+}
+
+
+
+/*******************/
+/*                 */
+/*  footer design  */
+/*                 */
+/*******************/
+
+footer {
+  position: relative;
+  margin:   0px;
+  padding:  0px 30px;
+}
+
+div#copy {
+  position: absolute;
+  right:    30px;
+  display:  inline-block;
+
+  color:       #0000ff;
+  font-size:   10pt;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+}
+
+
+
+/***********************************************************/
+/*                                                         */
+/*                                                         */
+/*  Copyright (C) 2017 Soichiro Kato All Rights Reserved.  */
+/*                                                         */
+/*                                                         */
+/***********************************************************/
